@@ -26,7 +26,6 @@ public class NoUTF8Char {
 		try {
 			data = Files.readAllBytes(path);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		ByteBuffer input = ByteBuffer.wrap(data);
@@ -36,24 +35,23 @@ public class NoUTF8Char {
 		try {
 			output = utf8Decoder.decode(input);
 		} catch (CharacterCodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		// Char buffer to string
 		String outputString = output.toString();
-		String outputStringCleaned = "";
+		String outputStringClean = "";
 		
 		for(int i = 0; i < outputString.length(); i++){
 			
 			if( (byte)outputString.charAt(i) == -3){//-3 = ? as byte			
-				outputStringCleaned += "";				
+				outputStringClean += "";				
 			}else{				
-				outputStringCleaned += outputString.charAt(i);				
+				outputStringClean += outputString.charAt(i);				
 			}
 		}
 
 		System.out.println("first  ======= " + outputString);
-		System.out.println("after  ======= " + outputStringCleaned);
+		System.out.println("after  ======= " + outputStringClean);
 	}	
 }
